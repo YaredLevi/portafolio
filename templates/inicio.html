@@ -1,0 +1,70 @@
+# heredo la base del sitio web que sería el navbar y el footer
+{% extends 'base.html' %}
+
+#carga seteardor de miles (para ingresar valores)
+{% load humanize %}
+#carga de imagenes
+{% load static %}
+
+#carga de js
+{% block js %}  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $(".slider").bxSlider();
+      });
+    </script>
+{% endblock %}
+
+#carga de css
+{% block css %}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+
+{% endblock %}
+
+
+#A partir de la base heredada añado el siguente contenido
+{% block contenido %}
+    
+#Carga de el slider promocional
+<div class="slider">
+    <div>
+        <img src="{% static 'PROMOS PARA EL SLIDER' %}" alt="">
+    </div>
+    <div>
+        <img src="{% static 'PROMOS PARA EL SLIDER' %}" alt="">
+    </div>
+    <div>
+        <img src="{% static 'PROMOS PARA EL SLIDER' %}" alt="">
+    </div>
+</div>
+    
+#acá se listan los eventos
+    
+<h2>Eventos</h2>
+    
+<div id="contenido">
+    <div class="productos">
+        {% for e in eventos %} 
+        <div class="producto">
+            <div class="contenedor">
+                {% if e.imagen %}
+                <img src="{{e.imagen.url}}" alt="DESC IMAGEN">
+                {% endif %}
+            </div>
+
+            <div class="detalles">
+                <h5>{{ e.nombre | capfirst }}</h5>
+                <h2>INFO EVENTO</h2>
+                <h3>INFO EVENTO</h3>
+            </div>
+        </div>
+
+    </div>
+    {% endfor%}
+</div>
+    
+{% endblock %}

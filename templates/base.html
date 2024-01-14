@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tecnomarket</title>
+    {% load static %}
+    {% block css %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    {% endblock %}
+    <!-- REFERENCIAR LA CSS -->
+
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    
+    <script src="js/myscript.js"></script>
+    
+</head>
+<body>
+<header id="header">
+    <img src="{%  static 'logo en la pestaña' %}" alt="menu" class="menu" id="menu">
+    <div class="contenedor_logo">
+        <img src="{%  static 'ubicación logo' %}" alt="logo" class="logo">
+        >
+    </div>
+    <div>
+        <nav id="nav">
+            <ul>
+                <li>
+                    <a href="{% url 'inicio' %}">Inicio</a>
+                </li>
+                <li>
+                    <a href="{% url 'solicitud' %}">Contácto</a>
+                </li>
+                <li>
+                    <a href="{% url 'registro' %}">Registrate</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+        
+        <div id="contenido">
+            {% block contenido %}
+            	
+            {% endblock %}
+        </div>
+
+    <footer>
+        <div class="marcas">
+            <img src="{%  static 'imagenes del footer' %}" alt="apple" style="width: 30px;">
+            <img src="{%  static 'imagenes del footer' %}" alt="lenovo">
+            <img src="{%  static 'imagenes del footer' %}" alt="microsoft">
+            <img src="{%  static 'imagenes del footer' %}" alt="samsung">
+            <img src="{%  static 'imagenes del footer' %}" alt="xiaomi">
+        </div>
+        <div class="logo_footer">
+            <img src="{%  static 'imagenes del footer' %}" alt="logo">
+        </div>
+    </footer>
+<script src="js/menu.js"></script>
+
+{% block js %}
+{% endblock %}
+</body>
+</html>
