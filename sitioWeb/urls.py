@@ -19,12 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from app_login.views import registro
+
 # URLS DEL SITIO PRINCIPAL
 urlpatterns = [
     path('admin/', admin.site.urls),
 
    # antes de importar cualquier url de alguna app, le antepone un "" osea nada
-    path('', include('app_login.url'))
+    path('', include('app_login.url')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('registro/', registro, name='registro'),
 ]
 
 if settings.DEBUG:

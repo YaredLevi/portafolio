@@ -1,12 +1,29 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from .forms import CustomUserCreationForm
 from .models import Evento
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def inicio_sesion(request):
-    return render(request, 'inicio_sesion.html')
+    return render(request, 'registration/login.html')
 def registro(request):
-    return render(request, 'registro.html')
+    data = {
+        'form': CustomUserCreationForm()
+    }
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
+            login(request, user)
+            messages.success(request, 'Registrado correctamente')
+            return redirect(to="inicio")
+        data['form'] = form
+
+    return render(request, 'registration/registro.html',data)
 def inicio(request):
     #lista las instancias de la entidad evento
     #luego saldran en inicio

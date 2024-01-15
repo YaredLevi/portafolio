@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#redireccionar url de login
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,7 +46,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app_login.apps.AppLoginConfig',
     'django.contrib.humanize',
+    'crispy_forms',
+    'crispy_bootstrap4',
+
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # DJANGO ADMIN INTERFACE PLUGIN
 X_FRAME_OPTIONS = "SAMEORIGIN"
@@ -57,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 ROOT_URLCONF = 'sitioWeb.urls'

@@ -7,7 +7,7 @@
     
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tecnomarket</title>
+    <title>PrimePass</title>
     {% load static %}
     {% block css %}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -38,6 +38,20 @@
                 <li>
                     <a href="{% url 'registro' %}">Registrate</a>
                 </li>
+
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'logout' %}">Cerrar sesión</a>
+                </li>
+                <li>
+                    <a href="#">{{ user.username }}</a>
+                </li>
+                {% else %}
+                    <li>
+                    <a href="{% url 'login' %}">Iniciar sesión</a>
+                </li>
+                {% endif %}
+
             </ul>
         </nav>
     </div>
